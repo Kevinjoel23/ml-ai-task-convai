@@ -383,5 +383,3 @@ test_data_set = [
     ]
   }
 ]
-
-print(len(test_data_set))

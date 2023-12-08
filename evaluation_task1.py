@@ -98,7 +98,9 @@ def get_gpt35_response(messages: list):
         stop=["User:"],
         stream=True
     )
-    
+
+    for response in responses:
+         print(response)
 
     resp_text = ""
     for response in responses:
@@ -163,13 +165,14 @@ def score_prompt(data: dict, user_query: str, gpt_response: str):
     # Find the first match
     match = re.search(pattern, resp_text, re.DOTALL)
     print(match)
+
     # Load the JSON object and extract the ratings for each criterion
     json_str = match.group()
     return json_str.replace("'", '"')
 
 
 def run_evaluation():
-    score_filename = "scores.csv"
+    score_filename = "scores_task_1.csv"
 
     # Writing to the csv file
     with open(score_filename, 'w', newline='') as score_file:
